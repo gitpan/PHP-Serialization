@@ -5,7 +5,7 @@ use Exporter ();
 
 use vars qw/$VERSION @ISA @EXPORT_OK/;
 
-$VERSION = '0.28';
+$VERSION = '0.29';
 	
 @ISA = qw(Exporter);	
 @EXPORT_OK = qw(unserialize serialize);
@@ -267,7 +267,7 @@ sub _readnum {
 	my $string;
 	while ( 1 ) {
 		my $char = $self->_readchar();
-		if ( $char !~ /^[\d\.]+$/ ) {
+		if ( $char !~ /^[\d\.-]+$/ ) {
 			$$cursor--;
 			last;
 		}
@@ -368,6 +368,8 @@ Make faster! (and more efficent?)
 
 Copyright (c) 2003 Jesse Brown <jbrown@cpan.org>. All rights reserved. This program is free software; 
 you can redistribute it and/or modify it under the same terms as Perl itself.
+
+Various patches contributed by assorted authors on rt.cpan.org (as detailed in Changes file).
 
 Currently maintained by Tomas Doran <bobtfish@bobtfish.net>.
 

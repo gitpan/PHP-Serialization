@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                PHP-Serialization
-version:             0.28
+version:             0.29
 abstract:            simple flexible means of converting the output of PHP's serialize() into the equivalent Perl memory structure, and vice versa.
 license:             ~
 author:              
