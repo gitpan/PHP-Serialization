@@ -1,13 +1,19 @@
 --- #YAML:1.0
-name:                PHP-Serialization
-version:             0.29
-abstract:            simple flexible means of converting the output of PHP's serialize() into the equivalent Perl memory structure, and vice versa.
-license:             ~
-author:              
+name:               PHP-Serialization
+version:            0.30
+abstract:           simple flexible means of converting the output of PHP's serialize() into the equivalent Perl memory structure, and vice versa.
+author:
     - Jesse Brown <jbrown@cpan.org>
-generated_by:        ExtUtils::MakeMaker version 6.42
-distribution_type:   module
-requires:     
+license:            unknown
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+requires:  {}
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.48
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4
