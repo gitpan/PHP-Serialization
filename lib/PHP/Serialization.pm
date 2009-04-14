@@ -8,7 +8,7 @@ use bytes;
 
 use vars qw/$VERSION @ISA @EXPORT_OK/;
 
-$VERSION = '0.30';
+$VERSION = '0.31';
 	
 @ISA = qw(Exporter);	
 @EXPORT_OK = qw(unserialize serialize);
@@ -16,6 +16,25 @@ $VERSION = '0.30';
 =head1 NAME
 
 PHP::Serialization - simple flexible means of converting the output of PHP's serialize() into the equivalent Perl memory structure, and vice versa.
+
+=head1 WARNING
+
+B<NOTE:> Not recommended for use, this module is mostly unmaintained, and has
+several severe known bugs. See the following for more information:
+
+=over
+
+=item L<http://rt.cpan.org/Ticket/Display.html?id=21218>
+
+=item L<http://rt.cpan.org/Ticket/Display.html?id=24441>
+
+=item L<http://rt.cpan.org/Ticket/Display.html?id=42029>
+
+=item L<http://rt.cpan.org/Ticket/Display.html?id=44700>
+
+=back
+
+Patches to fix any of these bugs are more than welcome!
 
 =head1 SYNOPSIS
 
@@ -231,6 +250,9 @@ sub _parse {
 			# Ok, read our boolen value..
 			my $bool = $self->_readchar;
 			$self->_skipchar;
+            if ($bool eq '0') {
+                $bool = undef;
+            }
 			push(@elems, $bool);
 		} 
 		elsif ( $type eq 'undef' ) {
