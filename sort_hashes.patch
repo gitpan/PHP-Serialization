@@ -1,0 +1,26 @@
+348a349,350
+> my $sorthash;
+> 
+350c352
+< 	my ($self, $val, $iskey) = @_;
+---
+> 	my ($self, $val, $iskey, $shash) = @_;
+351a354
+> 	$sorthash=$shash if defined $shash;
+372a376
+> 			return $self->_sort_hash_encode($val) if (($type eq 'HASH') and ($sorthash));
+380a385,398
+> sub _sort_hash_encode {
+> 	my ($self, $val) = @_;
+> 
+> 	my $buffer = '';
+> 	my @hsort = sort keys %{$val};
+> 	$buffer .= sprintf('a:%d:',scalar(@hsort)) . '{';
+> 	for (@hsort) {
+> 	    $buffer .= $self->encode($_,1);
+> 	    $buffer .= $self->encode($$val{$_});
+> 	}
+> 	$buffer .= '}';
+> 	return $buffer;
+> }
+> 
