@@ -8,7 +8,7 @@ use bytes;
 
 use vars qw/$VERSION @ISA @EXPORT_OK/;
 
-$VERSION = '0.33';
+$VERSION = '0.34';
 
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(unserialize serialize);
@@ -377,7 +377,7 @@ sub encode {
         return $self->_encode('obj', $val);
     }
     elsif ( ! ref($val) ) {
-        if ( $val =~ /^-?\d{1,10}$/ && abs($val) < 2**31 ) {
+        if ( $val =~ /^-?(?:[0-9]|[1-9]\d{1,10})$/ && abs($val) < 2**31 ) {
             return $self->_encode('int', $val);
         }
         elsif ( $val =~ /^-?\d+\.\d*$/ && !$iskey) {
